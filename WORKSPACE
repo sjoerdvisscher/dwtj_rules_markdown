@@ -1,4 +1,4 @@
-workspace(name = "me_dwtj_rules_markdown")
+workspace(name = "dwtj_rules_markdown")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
