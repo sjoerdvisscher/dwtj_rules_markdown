@@ -49,7 +49,3 @@ yarn_install(
     package_json = "//third_party/npm:package.json",
     yarn_lock = "//third_party/npm:yarn.lock",
 )
-
-load("//markdown:toolchains.bzl", "register_known_toolchain_instances")
-
-register_known_toolchain_instances()
