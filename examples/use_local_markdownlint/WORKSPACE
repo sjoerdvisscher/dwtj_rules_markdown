@@ -1,4 +1,4 @@
-workspace(name = 'examples_simple')
+workspace(name = 'use_local_markdownlint')
 
 local_repository(
     name = 'dwtj_rules_markdown',
