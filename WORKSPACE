@@ -49,3 +49,15 @@ yarn_install(
     package_json = "//third_party/npm:package.json",
     yarn_lock = "//third_party/npm:yarn.lock",
 )
+
+# Use local_markdownlint for testing.
+# TODO(dwtj): Use compiled markdownlint for testing.
+load('@dwtj_rules_markdown//markdown:defs.bzl', 'local_markdownlint_external_repository')
+
+local_markdownlint_external_repository(
+    name = 'local_markdownlint',
+)
+
+load('@local_markdownlint//:defs.bzl', 'register_local_markdownlint_toolchain')
+
+register_local_markdownlint_toolchain()

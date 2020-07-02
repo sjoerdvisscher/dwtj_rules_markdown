@@ -3,11 +3,12 @@
 
 MarkdownInfo = provider(
     fields = [
-        'transitive_sources',
+        'direct_source_files',
+        'transitive_source_files',
     ],
 )
 
-def _build_transitive_depset(srcs, deps):
+def _build_transitive_source_files_depset(srcs, deps):
     return depset(
         srcs,
         transitive = [dep[MarkdownInfo].transitive_sources for dep in deps]
@@ -15,7 +16,8 @@ def _build_transitive_depset(srcs, deps):
 
 def _markdown_library_impl(ctx):
     return MarkdownInfo(
-        transitive_sources = _build_transitive_depset(
+        direct_source_files = ctx.files.srcs,
+        transitive_source_files = _build_transitive_source_files_depset(
             srcs = ctx.files.srcs,
             deps = ctx.attr.deps,
         ),
