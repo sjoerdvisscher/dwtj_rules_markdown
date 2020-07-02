@@ -55,18 +55,24 @@ markdown_library(
 Add this to your workspace's `.bazelrc` file:
 
 ```bazelrc
-build --aspects @dwtj_rules_markdown//markdown:defs.bzl%markdownlint_aspect
+build --aspects @dwtj_rules_markdown//markdown:defs.bzl%markdownlint_aspect --output_groups=markdownlint_logs
 ```
 
-### Step 4. Fetch Markdown Lint Toolchains
+### Step 4. Add A Markdown Lint Toolchain
 
 Add this to your `WORKSPACE` file:
 
 ```WORKSPACE
-load("@dwtj_rules_markdown//markdown:defs.bzl", "known_remote_markdownlint_toolchains")
+local_markdownlint_external_repository(
+    name = 'local_markdownlint',
+)
 
-known_remote_markdownlint_toolchains()
+load('@local_markdownlint//:defs.bzl', 'register_local_markdownlint_toolchain')
+
+register_local_markdownlint_toolchain()
 ```
+
+This will search your system path for a `markdownlint` executable to use.
 
 ## Overview of This Project's Modules
 
@@ -81,6 +87,8 @@ used to declare instances of the `//markdown/toolchains/lint:toolchain_type`
 toolchain type. Such a toolchain instance includes the metadata needed to
 locate a `markdownlint` binary. (Some background on Bazel toolchains and
 toolchain resolution is provided [here][3].)
+
+**TODO(dwtj)**: KEep drafting this section.
 
 ## Future Development Opportunities
 
