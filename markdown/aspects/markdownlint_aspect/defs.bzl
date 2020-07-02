@@ -59,6 +59,7 @@ def _markdownlint_aspect_impl(target, aspect_ctx):
     )
 
     return [
+        OutputGroupInfo(markdownlint_logs = [output_file]),
         MarkdownLintAspectInfo(output_file = output_file),
     ]
 
