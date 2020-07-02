@@ -9,7 +9,7 @@ _BUILD_FILE_CONTENTS = """
 load("@dwtj_rules_markdown//markdown:defs.bzl", "markdownlint_toolchain")
 markdownlint_toolchain(
     name = "local_markdownlint_toolchain",
-    markdownlint_tool = ":markdownlint",
+    markdownlint_executable = ":markdownlint",
 )
 
 # This rule instance declares that the rule `:local_markdownlint_toolchain` is a
