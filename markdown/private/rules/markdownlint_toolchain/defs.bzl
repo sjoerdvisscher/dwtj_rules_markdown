@@ -27,6 +27,7 @@ markdownlint_toolchain = rule(
             cfg = "host",
         ),
         "markdownlint_executable": attr.label(
+            allow_single_file = True,
             executable = True,
             default = Label("@npm//markdownlint-cli/bin:markdownlint"),
             cfg = "host",
